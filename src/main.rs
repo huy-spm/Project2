@@ -10,7 +10,7 @@ fn main() {
     let s=ds.grade(7);
     let x=ds.grades();
     println!("{:?}",s);
-     sort(x);
+    println!("{:?}",x);
     //sortName(s);
    
 }
@@ -31,16 +31,11 @@ impl  School {
     pub fn grades(&self) ->Vec<u32>{
         let mut vec=Vec::new();
         for i in &self.students {
-            if vec.contains(i.1)
-            {
-                break;
-            }
-            else {
             vec.push(*i.1);
            }
-
-        }
-        return vec;
+           vec.sort();
+           vec.dedup();
+           return vec;
         }
 
     pub fn grade(&self, grade: u32) -> Vec<&String> {
@@ -51,6 +46,7 @@ impl  School {
                 vec.push(i.0);
             }
         }
+        vec.sort();
         return vec;
     }
 }
